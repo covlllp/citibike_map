@@ -69,4 +69,20 @@ actionMap[Actions.HISTORICAL_STATION_AT_TIME_ERROR] = (state, action) => ({
   error: action.payload,
 });
 
+// Trip Fetch
+actionMap[Actions.TRIPS_AT_TIME_FETCH] = state => ({
+  ...state,
+  apiTripsAtTimeStatus: ApiStatus.Fetch,
+});
+actionMap[Actions.TRIPS_AT_TIME_SUCCESS] = (state, action) => ({
+  ...state,
+  apiTripsAtTimeStatus: ApiStatus.Success,
+  trips: action.payload,
+});
+actionMap[Actions.TRIPS_AT_TIME_ERROR] = (state, action) => ({
+  ...state,
+  apiTripsAtTimeStatus: ApiStatus.Error,
+  error: action.payload,
+});
+
 export const reducer = handleActions(actionMap, {});

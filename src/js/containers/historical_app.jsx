@@ -6,7 +6,7 @@ import { ApiStatus } from 'js/api/constants';
 import { fetchDateRange, fetchStationsAt } from 'js/data/actions';
 import { View } from 'js/components/view';
 import { TIME_DELTA, REFRESH_RATE } from 'js/constants';
-import { Station } from 'js/types';
+import { Station } from 'js/types/station';
 
 class HistoricalApp extends Component {
   constructor(props) {

@@ -5,11 +5,11 @@ import * as csv from './csv';
 const app = express();
 
 // Routes
-app.get('/data/stations', (req, res) => {
-  console.log('request to /data/stations');
-  if (!csv.data.isComplete) res.status(202).send('Analysis not complete');
-  else res.json(csv.data.stations);
-});
+// app.get('/data/stations', (req, res) => {
+//   console.log('request to /data/stations');
+//   if (!csv.data.isComplete) res.status(202).send('Analysis not complete');
+//   else res.json(csv.data.stations);
+// });
 
 app.get('/data/stationsAt/:time', (req, res) => {
   console.log('request to /data/stationsAt');
@@ -36,10 +36,24 @@ app.get('/data/date_range', (req, res) => {
   }
 });
 
-app.get('/data/trips', (req, res) => {
-  console.log('request to /data/trips');
+// app.get('/data/trips', (req, res) => {
+//   console.log('request to /data/trips');
+//   if (!csv.data.isComplete) res.status(202).send('Analysis not complete');
+//   else res.json(csv.data.trips);
+// });
+
+app.get('/data/trips_from/:startTime/:endTime', (req, res) => {
+  console.log('request to /data/trips_from');
   if (!csv.data.isComplete) res.status(202).send('Analysis not complete');
-  else res.json(csv.data.trips);
+  else {
+    const startTime = parseInt(req.params.startTime, 10);
+    const endTime = parseInt(req.params.endTime, 10);
+    res.json({
+      trips: csv.data.trips.filter(
+        trip => trip.startTime > startTime && trip.endTime < endTime,
+      ),
+    });
+  }
 });
 
 app.get('/data/reset', (req, res) => {

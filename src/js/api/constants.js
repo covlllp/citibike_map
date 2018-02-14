@@ -13,3 +13,5 @@ export const ApiStatus = {
 export const HISTORICAL_TIME_RANGE_URL = '/data/date_range';
 
 export const STATION_STATUS_AT_TIME = '/data/stationsAt/';
+
+export const TRIP_RANGE_URL = '/data/trips_from/';

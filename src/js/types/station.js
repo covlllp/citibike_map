@@ -44,22 +44,20 @@ export class Station {
       type === 'diff'
         ? stations.map(station => (newIds.indexOf(station.id) < 0 ? 1 : 0))
         : utilities;
-    return [
-      {
-        type: 'scatter',
-        x: stations.map(station => station.lon),
-        y: stations.map(station => station.lat),
-        marker: {
-          size,
-          sizemin: 3,
-          color,
-          colorscale: [[0, 'red'], [1, 'blue']],
-          cmin: 0,
-          cmax: 1,
-          showscale: true,
-        },
-        mode: 'markers',
+    return {
+      type: 'scatter',
+      x: stations.map(station => station.lon),
+      y: stations.map(station => station.lat),
+      marker: {
+        size,
+        sizemin: 3,
+        color,
+        colorscale: [[0, 'red'], [1, 'blue']],
+        cmin: 0,
+        cmax: 1,
+        showscale: true,
       },
-    ];
+      mode: 'markers',
+    };
   }
 }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { View } from 'js/components/view';
 import { fetchStationInfo, fetchStationStatus } from 'js/data/actions';
 import { REFRESH_RATE } from 'js/constants';
-import { Station } from 'js/types';
+import { Station } from 'js/types/station';
 
 class LiveApp extends Component {
   componentDidMount() {
