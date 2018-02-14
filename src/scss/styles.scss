@@ -1,0 +1,14 @@
+body {
+  margin: 5px;
+}
+
+.container {
+  height: calc(100vh - 10px);
+  width: calc(100vw - 10px);
+  position: relative;
+}
+
+.plot-view {
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "import/resolver":"webpack"
+  },
+  "rules": {
+    "import/prefer-default-export": 0,
+    "import/extensions": 0
+  }
+}
