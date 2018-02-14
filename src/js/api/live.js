@@ -1,4 +1,5 @@
 import * as constants from 'js/api/constants';
+import { filterStations } from 'js/api/general';
 
 function deserializeStationInfo(info) {
   return {
@@ -29,7 +30,8 @@ function deserializeStationStatusResponse(res) {
 export function fetchStationInfo() {
   return fetch(constants.STATION_INFO_URL)
     .then(res => res.json())
-    .then(res => deserializeStationInfoResponse(res));
+    .then(res => deserializeStationInfoResponse(res))
+    .then(filterStations);
 }
 
 export function fetchStationStatus() {

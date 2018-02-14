@@ -1,4 +1,5 @@
 import * as constants from 'js/api/constants';
+import { filterStations } from 'js/api/general';
 
 function deserializeStation(station) {
   return {
@@ -16,14 +17,7 @@ export function fetchStationsAt(time) {
   return fetch(constants.STATION_STATUS_AT_TIME + timeNum)
     .then(res => res.json())
     .then(res =>
-      Object.values(res.stations)
-        .map(station => deserializeStation(station))
-        .filter(
-          station =>
-            station.lat > 35 &&
-            station.lat < 45 &&
-            station.lon > -75 &&
-            station.lon < -70,
-        ),
-    );
+      Object.values(res.stations).map(station => deserializeStation(station)),
+    )
+    .then(filterStations);
 }

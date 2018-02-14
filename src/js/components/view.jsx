@@ -25,6 +25,11 @@ export class View extends Component {
     if (newIds.length) this.setState({ newIds });
   }
 
+  getTripPlot() {
+    if (!this.props.trips.length) return {};
+    return Trip.getPlotlyTrips(this.props.trips, this.props.stations);
+  }
+
   getStationPlot() {
     const stationList = Station.getStationList(this.props.stations);
     return Station.getPlotlyStations(
@@ -37,11 +42,12 @@ export class View extends Component {
   render() {
     console.log(this.props.trips);
     const stationPlot = this.getStationPlot();
+    const tripPlot = this.getTripPlot();
 
-    const data = [stationPlot];
+    const data = [stationPlot, tripPlot];
 
     const config = {
-      staticPlot: true,
+      staticPlot: false,
     };
 
     const layout = {

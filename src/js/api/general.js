@@ -12,3 +12,13 @@ export function fetchDateRange() {
     .then(res => res.json())
     .then(res => deserializeTimeRange(res));
 }
+
+export function filterStations(stations) {
+  return stations.filter(
+    station =>
+      station.lat > 40 &&
+      station.lat < 41 &&
+      station.lon > -75 &&
+      station.lon < -73.8,
+  );
+}
